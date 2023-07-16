@@ -1,54 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paquete03;
 
 import java.util.ArrayList;
 import paquete01.Televisor;
 
-/**
- *
- * @author reroes
- */
 public class VentasTvs {
-    double precioTotal;
-    ArrayList<Televisor> televisores;
+    private double precioTotal;
+    private ArrayList<Televisor> televisores;
 
-    public VentasTvs(double precioTotal, ArrayList<Televisor> televisores) {
-        this.precioTotal = precioTotal;
+    public VentasTvs(ArrayList<Televisor> televisores) {
         this.televisores = televisores;
     }
 
-    public double televisorMasCaro(ArrayList<Televisor> t){
-        double s = televisores.get(0).obtenerPrecio();
-        for (int i = 0; i < televisores.size(); i++) {
-            if(televisores.get(i).obtenerPrecio() > s) {
-                s = televisores.get(i).obtenerPrecio();
-            }
+    public double obtenerPrecioTotal() {
+        double total = 0;
+        for (Televisor televisor : televisores) {
+            total += televisor.obtenerPrecio();
         }
-        return s;
-    }
-
-    public void establecerPrecioTotal(){
-        double s = 0;
-        for (int i = 0; i < televisores.size(); i++) {
-            s = s + televisores.get(i).obtenerPrecio();
-        }
-        precioTotal = s;
-    }
-
-    public double obtenerPrecioTotal(){
+        precioTotal = total;
         return precioTotal;
     }
 
-    public String listaMarcasVendidas(ArrayList<Televisor> t){
-        String s = "";
-        for (int i = 0; i < t.size(); i++) {
-            s = String.format("%s%s\n", s, t.get(i).obtenerMarca());
+    public String obtenerMarcasVendidas() {
+        String marcas = "";
+        for (Televisor televisor : televisores) {
+            marcas += televisor.obtenerMarca() + "\n";
         }
-        return s;
+        return marcas;
     }
-    
+
+    public Televisor obtenerTelevisorMasCaro() {
+        Televisor televisorMasCaro = televisores.get(0);
+        for (Televisor televisor : televisores) {
+            if (televisor.obtenerPrecio() > televisorMasCaro.obtenerPrecio()) {
+                televisorMasCaro = televisor;
+            }
+        }
+        return televisorMasCaro;
+    }
 }
