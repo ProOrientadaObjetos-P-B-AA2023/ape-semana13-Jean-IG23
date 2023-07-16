@@ -1,24 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package p1;
 
-/**
- *
- * @author reroes
- */
-public class MatriculaMaternal {
-    private double tarifa;
-    
-        
-    public void establecerTarifa(){
-        // tarifa = costo desayunos + costo almuerzo + costo medico
-        tarifa = 50.2 + 40.2 + 80.2;
+public class MatriculaMaternal extends Matricula{
+    private double costoDesayuno;
+    private double costoAlmuerzo;
+    private double costoMedico;
+
+    public MatriculaMaternal(double costoDesayuno, double costoAlmuerzo, double costoMedico) {
+        this.costoDesayuno = costoDesayuno;
+        this.costoAlmuerzo = costoAlmuerzo;
+        this.costoMedico = costoMedico;
     }
-        
-    public double obtenerTarifa(){
-        return tarifa;
+
+    public void precioTarifa() {
+        super.setTarifa(costoDesayuno + costoAlmuerzo + costoMedico);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "MatriculaMaternal{" +
+                "costoDesayuno=" + costoDesayuno +
+                ", costoAlmuerzo=" + costoAlmuerzo +
+                ", costoMedico=" + costoMedico +
+                '}';
     }
 }
