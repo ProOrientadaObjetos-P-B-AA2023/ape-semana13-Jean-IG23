@@ -1,51 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package p2;
 
-import p1.MatriculaCampamento;
-import p1.MatriculaColegio;
+import p1.Matricula;
 
-/**
- *
- * @author reroes
- */
+import java.util.ArrayList;
+
 public class TipoMatricula {
-    private double promedioMatriculas;
-    private MatriculaCampamento campamento;
-    private MatriculaColegio colegio;
-    // private MatriculaEscuela escuela;
-    // private MatriculaJardin jardin;
-    // private MatriculaMaternal maternal;
-    // private MatriculaMaternal maternal2;
-    
-    public void establecerMatriculaCampamento(MatriculaCampamento c){
-        campamento = c;
+    ArrayList<Matricula> matri;
+
+    public TipoMatricula(ArrayList<Matricula> matri) {
+        this.matri = matri;
     }
-    
-    public void establecerMatriculaColegio(MatriculaColegio c){
-        colegio = c;
+
+    public double establecerPromedioTarifas() {
+        double promedioM = 0;
+        for (Matricula matri1 : matri) {
+            promedioM = promedioM + matri1.getTarifa();
+        }
+        return promedioM / matri.size();
     }
-    
-    public MatriculaCampamento obtenerMatriculaCampamento(){
-        return campamento;
-    }
-    
-    public MatriculaColegio obtenerMatriculaColegio(){
-        return colegio;
-    }
-    
-    public void establecerPromedioTarifas(){
-        promedioMatriculas = (obtenerMatriculaCampamento().obtenerTarifa() + 
-                obtenerMatriculaColegio().obtenerTarifa())/2;
-        
-    }
-    
-    public double obtenerPromedioTarifas(){
-        return promedioMatriculas;
-    }
-    
-    
 }
